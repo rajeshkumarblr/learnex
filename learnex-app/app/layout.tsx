@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/lib/Providers/ThemeProvider";
+import MainNav from "@/components/MainNav";
+import CustomSideBar from "@/components/CustomSidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <MainNav />
+          <main className="grid grid-cols-5 h-[calc(100vh-4.1rem)]">
+            <CustomSideBar />
+            <section className="col-span-4 px-4 py-4">{children}</section>
+          </main>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
