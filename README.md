@@ -18,7 +18,8 @@ The backend is a simple Python Flask application that provides a REST API interf
 
 ## Frontend
 The frontend is implemented in Next.js. It provides a simple and intuitive UI for students to learn a particular subject with all learning resources in one place. It offers an easy way to get assistance from AI to clear doubts and have conversations with AI to deeply learn a subject and understand the concepts clearly.
-## DockerSetup
+
+## Docker Setup
 
 * Build the image using docker build command `docker build -t <image_name> .`.
 * Create a file .env where all the values or secrets are mentioned.
