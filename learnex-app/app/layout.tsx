@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/lib/Providers/ThemeProvider";
 import MainNav from "@/components/MainNav";
 import CustomSideBar from "@/components/CustomSidebar";
+import { Toaster } from "@/components/ui/toaster";
+import "simplebar-react/dist/simplebar.min.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +29,7 @@ export default function RootLayout({
             <section className="col-span-4 px-4 py-4">{children}</section>
           </main>
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
