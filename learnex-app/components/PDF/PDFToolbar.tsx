@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { ChevronDown, ChevronUp, ZoomIn } from "lucide-react";
+import { ChevronDown, ChevronUp, Sparkles, ZoomIn } from "lucide-react";
 import { Input } from "../ui/input";
 import { Skeleton } from "../ui/skeleton";
 import {
@@ -19,6 +19,7 @@ interface PDFToolbarProps {
   onPageChange?: (page: number) => void;
   scale?: number;
   onScaleChange?: (scale: number) => void;
+  onSummarize?: (type: "page" | "chapter") => void;
 }
 
 const ToolbarSkeleton = () => {
@@ -40,6 +41,7 @@ const PDFToolbar = ({
   isLoading,
   scale,
   onScaleChange,
+  onSummarize,
 }: PDFToolbarProps) => {
   return (
     <div className="h-14 w-full border-b border-primary-foreground flex items-center justify-between px-2">
@@ -80,7 +82,32 @@ const PDFToolbar = ({
               <ChevronUp className="h-4 w-4" />
             </Button>
           </div>
-          <div className="space-x-2">
+          <div className="flex justify-between space-x-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  aria-label="Summarize"
+                  className="gap-1.5"
+                >
+                  <Sparkles className="h-4 w-4" />
+                  Summarize
+                  <ChevronDown className="h-3 w-3 opacity-50" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem
+                  onSelect={() => onSummarize && onSummarize("page")}
+                >
+                  Page
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={() => onSummarize && onSummarize("chapter")}
+                >
+                  Entire Chapter
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" aria-label="zoom" className="gap-1.5">
