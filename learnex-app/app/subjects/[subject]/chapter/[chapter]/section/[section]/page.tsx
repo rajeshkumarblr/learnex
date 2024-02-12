@@ -1,3 +1,4 @@
+import PDFRenderer from "@/components/PDF/PDFRenderer";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -35,6 +36,7 @@ const SectionPage = ({
       </div>
 
       <h1 className="text-xl font-bold">Section {section}</h1>
+      <PDFRenderer url="https://lipivc.blob.core.windows.net/books/keph101.pdf" />
     </div>
   );
 };
